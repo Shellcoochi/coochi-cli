@@ -1,0 +1,45 @@
+{
+  "name": "@coochi/core",
+  "version": "0.0.0",
+  "description": "> TODO: description",
+  "author": "shellcoochi <18706577758@163.com>",
+  "homepage": "https://github.com/Shellcoochi/tmp#readme",
+  "license": "ISC",
+  "bin": {
+    "coochi": "bin/index.js"
+  },
+  "main": "lib/index.js",
+  "directories": {
+    "lib": "lib",
+    "test": "__tests__"
+  },
+  "files": [
+    "lib"
+  ],
+  "publishConfig": {
+    "registry": "https://registry.npm.taobao.org"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Shellcoochi/tmp.git"
+  },
+  "scripts": {
+    "test": "echo \"Error: run tests from root\" && exit 1"
+  },
+  "bugs": {
+    "url": "https://github.com/Shellcoochi/tmp/issues"
+  },
+  "dependencies": {
+    "@coochi/get-npm-info": "file:../../utils/get-npm-info",
+    "@coochi/exec": "file:../exec",
+    "@coochi/log": "file:../../utils/log",
+    "@coochi/init": "file:../../commands/init",
+    "colors": "^1.4.0",
+    "commander": "^9.2.0",
+    "dotenv": "^16.0.0",
+    "import-local": "^3.1.0",
+    "path-exists": "^4.0.0",
+    "root-check": "^1.0.0",
+    "semver": "^7.3.7"
+  }
+}
