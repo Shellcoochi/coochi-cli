@@ -73,7 +73,7 @@ class InitCommand extends Command {
         return null
     }
 
-    async execCommand(command,errMsg) {
+    async execCommand(command, errMsg) {
         let ret;
         if (command) {
             const cmdArray = command.split(' ');
@@ -93,30 +93,56 @@ class InitCommand extends Command {
         return ret;
     }
 
+    ejsRender(option) {
+        return new Promise((resove, reject) => {
+            const dir = process.cwd();
+            require('glob')('**', {
+                cwd: dir,
+                ignore: option.ignore,
+                nodir: true,
+            }, (err, files) => {
+                if (err) {
+                    console.log(err);
+                }
+                Promise.all(files.map(file => {
+                    const filePath = path.join(dir,file);
+                    console.log(filePath);
+                })).then(() => {
+                    resove();
+                }).catch(err => {
+                    reject(err);
+                })
+            })
+        })
+    }
+
     async installNormalTemplate() {
         log.verbose('templateNpm', this.templateNpm);
         //拷贝模版代码至当前目录
         let spinner = spinnerStart('正在安装模版。。。');
         await sleep();
         try {
-            const templatePath = path.resolve(this.templateNpm.cacheFilePath,'template');
+            const templatePath = path.resolve(this.templateNpm.cacheFilePath, 'template');
             // const templatePath = path.resolve(this.templateNpm.cacheFilePath);
             const targetPath = process.cwd();
             fse.ensureDirSync(templatePath);
             fse.ensureDirSync(targetPath);
+            console.log('templatePath',templatePath)
             //需要增加dereference配置以兼容win 
-            fse.copySync(templatePath, targetPath,{dereference:true});
+            fse.copySync(templatePath, targetPath, { dereference: true });
         } catch (error) {
             throw error;
         } finally {
             spinner.stop(true);
             log.success('模版安装成功！');
         }
+        const ignore = ['node_modules/**'];
+        await this.ejsRender({ ignore });
         //安装依赖
         const { installCommand, startCommand } = this.templateInfo;
-        this.execCommand(installCommand,'依赖安装过程中失败！');
+        this.execCommand(installCommand, '依赖安装过程中失败！');
         //启动命令执行
-        this.execCommand(startCommand,'启动过程中失败！');
+        this.execCommand(startCommand, '启动过程中失败！');
     }
 
     async installCustomTemplate() {
@@ -294,9 +320,9 @@ class InitCommand extends Command {
 
         }
         //生成className
-        if(projectInfo.projectName){
+        if (projectInfo.projectName) {
             //将驼峰命名转换成class-name形式
-            projectInfo.className = require('kebab-case')(projectInfo.projectName).replace(/^-/,'');
+            projectInfo.className = require('kebab-case')(projectInfo.projectName).replace(/^-/, '');
         }
         //return 项目基本信息（object）
         return projectInfo;

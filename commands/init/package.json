@@ -33,6 +33,7 @@
     "@coochi/request": "file:../../utils/request",
     "@coochi/utils": "file:../../utils/utils",
     "fs-extra": "^10.1.0",
+    "glob": "^8.0.1",
     "inquirer": "^8.2.4",
     "kebab-case": "^1.0.1",
     "semver": "^7.3.7"
