@@ -104,7 +104,8 @@ class InitCommand extends Command {
             const targetPath = process.cwd();
             fse.ensureDirSync(templatePath);
             fse.ensureDirSync(targetPath);
-            fse.copySync(templatePath, targetPath);
+            //需要增加dereference配置以兼容win 
+            fse.copySync(templatePath, targetPath,{dereference:true});
         } catch (error) {
             throw error;
         } finally {
