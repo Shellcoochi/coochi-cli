@@ -32,6 +32,7 @@
     "@coochi/package": "file:../../models/package",
     "@coochi/request": "file:../../utils/request",
     "@coochi/utils": "file:../../utils/utils",
+    "ejs": "^3.1.7",
     "fs-extra": "^10.1.0",
     "glob": "^8.0.1",
     "inquirer": "^8.2.4",

@@ -6,6 +6,8 @@ const userHome = require("os").homedir();
 const inquirer = require('inquirer');
 const fse = require('fs-extra');
 const semver = require('semver');
+const glob = require('glob');
+const ejs =  require('ejs');
 
 const Command = require('@coochi/command');
 const log = require('@coochi/log');
@@ -94,9 +96,10 @@ class InitCommand extends Command {
     }
 
     ejsRender(option) {
+        const dir = process.cwd();
+        const projectInfo = this.projectInfo;
         return new Promise((resove, reject) => {
-            const dir = process.cwd();
-            require('glob')('**', {
+            glob('**', {
                 cwd: dir,
                 ignore: option.ignore,
                 nodir: true,
@@ -106,7 +109,16 @@ class InitCommand extends Command {
                 }
                 Promise.all(files.map(file => {
                     const filePath = path.join(dir,file);
-                    console.log(filePath);
+                    return new Promise((resove1,reject1)=>{
+                        ejs.renderFile(filePath,projectInfo,(err,result)=>{
+                            if(err){
+                                reject1(err);
+                            }else{
+                                fse.writeFileSync(filePath,result);
+                                resove1(result);
+                            }
+                        })
+                    })
                 })).then(() => {
                     resove();
                 }).catch(err => {
@@ -127,7 +139,6 @@ class InitCommand extends Command {
             const targetPath = process.cwd();
             fse.ensureDirSync(templatePath);
             fse.ensureDirSync(targetPath);
-            console.log('templatePath',templatePath)
             //需要增加dereference配置以兼容win 
             fse.copySync(templatePath, targetPath, { dereference: true });
         } catch (error) {
@@ -136,7 +147,7 @@ class InitCommand extends Command {
             spinner.stop(true);
             log.success('模版安装成功！');
         }
-        const ignore = ['node_modules/**'];
+        const ignore = ['node_modules/**','public/**'];
         await this.ejsRender({ ignore });
         //安装依赖
         const { installCommand, startCommand } = this.templateInfo;
@@ -321,8 +332,12 @@ class InitCommand extends Command {
         }
         //生成className
         if (projectInfo.projectName) {
+            projectInfo.name = projectInfo.projectName;
             //将驼峰命名转换成class-name形式
             projectInfo.className = require('kebab-case')(projectInfo.projectName).replace(/^-/, '');
+        }
+        if(projectInfo.projectVersion){
+            projectInfo.version = projectInfo.projectVersion;
         }
         //return 项目基本信息（object）
         return projectInfo;
