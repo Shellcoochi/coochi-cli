@@ -18,7 +18,7 @@ function getNpmInfo(npmName, registry) {
     }).catch(err => Promise.reject(err))
 }
 
-function getDefaultRegistry(isOriginal = false) {
+function getDefaultRegistry(isOriginal = true) {
     return isOriginal ? 'https://registry.npmJs.org' : 'https://registry.npm.taobao.org'
 }
 
@@ -48,7 +48,7 @@ async function getNpmSemverVersion(baseVersion, npmName, registry) {
 async function getNpmLatestVersion(npmName, registry) {
     const versions = await getNpmVersions(npmName, registry);
     if (versions) {
-        return versions.sort((a, b) => semver.gt(b, a))[0];
+        return versions.sort((a, b) => semver.gt(b, a)?1:-1)[0];
     }
     return null;
 }

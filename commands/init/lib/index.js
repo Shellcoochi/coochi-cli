@@ -99,8 +99,8 @@ class InitCommand extends Command {
         let spinner = spinnerStart('正在安装模版。。。');
         await sleep();
         try {
-            // const templatePath = path.resolve(this.templateNpm.cacheFilePath,'template');
-            const templatePath = path.resolve(this.templateNpm.cacheFilePath);
+            const templatePath = path.resolve(this.templateNpm.cacheFilePath,'template');
+            // const templatePath = path.resolve(this.templateNpm.cacheFilePath);
             const targetPath = process.cwd();
             fse.ensureDirSync(templatePath);
             fse.ensureDirSync(targetPath);
@@ -292,6 +292,11 @@ class InitCommand extends Command {
             }
         } else if (type === TYPE_COMPONENT) {
 
+        }
+        //生成className
+        if(projectInfo.projectName){
+            //将驼峰命名转换成class-name形式
+            projectInfo.className = require('kebab-case')(projectInfo.projectName).replace(/^-/,'');
         }
         //return 项目基本信息（object）
         return projectInfo;
