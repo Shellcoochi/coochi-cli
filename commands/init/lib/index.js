@@ -106,7 +106,7 @@ class InitCommand extends Command {
             fse.ensureDirSync(targetPath);
             fse.copySync(templatePath, targetPath);
         } catch (error) {
-            throw e;
+            throw error;
         } finally {
             spinner.stop(true);
             log.success('模版安装成功！');
