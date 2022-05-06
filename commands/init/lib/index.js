@@ -7,7 +7,7 @@ const inquirer = require('inquirer');
 const fse = require('fs-extra');
 const semver = require('semver');
 const glob = require('glob');
-const ejs =  require('ejs');
+const ejs = require('ejs');
 
 const Command = require('@coochi/command');
 const log = require('@coochi/log');
@@ -108,13 +108,13 @@ class InitCommand extends Command {
                     console.log(err);
                 }
                 Promise.all(files.map(file => {
-                    const filePath = path.join(dir,file);
-                    return new Promise((resove1,reject1)=>{
-                        ejs.renderFile(filePath,projectInfo,(err,result)=>{
-                            if(err){
+                    const filePath = path.join(dir, file);
+                    return new Promise((resove1, reject1) => {
+                        ejs.renderFile(filePath, projectInfo, (err, result) => {
+                            if (err) {
                                 reject1(err);
-                            }else{
-                                fse.writeFileSync(filePath,result);
+                            } else {
+                                fse.writeFileSync(filePath, result);
                                 resove1(result);
                             }
                         })
@@ -147,7 +147,7 @@ class InitCommand extends Command {
             spinner.stop(true);
             log.success('模版安装成功！');
         }
-        const ignore = ['node_modules/**','public/**'];
+        const ignore = ['node_modules/**', 'public/**'];
         await this.ejsRender({ ignore });
         //安装依赖
         const { installCommand, startCommand } = this.templateInfo;
@@ -248,7 +248,15 @@ class InitCommand extends Command {
     }
 
     async getProjectInfo() {
+        function isValidName(v) {
+            return /^[a-zA-z]+([-][a-zA-z][a-zA-Z0-9]*|[_][a-zA-z][a-zA-Z0-9]*|[a-zA-Z0-9])*$/.test(v)
+        }
         let projectInfo = {};
+        let isProjectNameValid = false;
+        if (isValidName(this.projectName)) {
+            isProjectNameValid = true;
+            projectInfo.projectName = this.projectName;
+        }
         //1.选择创建项目或组件
         const { type } = await inquirer.prompt({
             type: 'list',
@@ -269,29 +277,33 @@ class InitCommand extends Command {
         log.verbose(type);
         if (type === TYPE_PROJECT) {
             //2.获取项目的基本信息
-            const project = await inquirer.prompt([
-                {
-                    type: 'input',
-                    name: 'projectName',
-                    message: '请输入项目名称',
-                    default: '',
-                    validate: function (v) {
-                        const done = this.async();
-                        setTimeout(function () {
-                            //1.首字母必须为英文字符
-                            //2.尾字符必须为英文、数字，不能为字符
-                            //3.字符仅允许“-_”
-                            if (!/^[a-zA-z]+([-][a-zA-z][a-zA-Z0-9]*|[_][a-zA-z][a-zA-Z0-9]*|[a-zA-Z0-9])*$/.test(v)) {
-                                done('请输入合法的项目名称');
-                                return;
-                            }
-                            done(null, true);
-                        }, 0)
-                    },
-                    filter: function (v) {
-                        return v;
-                    }
+            const projectNamePrompt = {
+                type: 'input',
+                name: 'projectName',
+                message: '请输入项目名称',
+                default: '',
+                validate: function (v) {
+                    const done = this.async();
+                    setTimeout(function () {
+                        //1.首字母必须为英文字符
+                        //2.尾字符必须为英文、数字，不能为字符
+                        //3.字符仅允许“-_”
+                        if (!isValidName(v)) {
+                            done('请输入合法的项目名称');
+                            return;
+                        }
+                        done(null, true);
+                    }, 0)
                 },
+                filter: function (v) {
+                    return v;
+                }
+            };
+            const projectPrompt = [];
+            if (!isProjectNameValid) {
+                projectPrompt.push(projectNamePrompt);
+            }
+            projectPrompt.push(
                 {
                     type: 'input',
                     name: 'projectVersion',
@@ -322,8 +334,10 @@ class InitCommand extends Command {
                     message: '请选择项目模版',
                     choices: this.createTemplateChoices()
                 }
-            ])
+            );
+            const project = await inquirer.prompt(projectPrompt)
             projectInfo = {
+                ...projectInfo,
                 type,
                 ...project,
             }
@@ -336,7 +350,7 @@ class InitCommand extends Command {
             //将驼峰命名转换成class-name形式
             projectInfo.className = require('kebab-case')(projectInfo.projectName).replace(/^-/, '');
         }
-        if(projectInfo.projectVersion){
+        if (projectInfo.projectVersion) {
             projectInfo.version = projectInfo.projectVersion;
         }
         //return 项目基本信息（object）
