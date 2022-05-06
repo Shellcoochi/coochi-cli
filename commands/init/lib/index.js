@@ -158,7 +158,28 @@ class InitCommand extends Command {
     }
 
     async installCustomTemplate() {
-
+        //查询自定义模版的入口文件
+        if (await this.templateNpm.exists()) {
+            const rootFile = this.templateNpm.getRootFilePath();
+            // const rootFile = '/Users/shellcoochi/code/template/coochi-custom/index.js'
+            console.log(rootFile)
+            if (fs.existsSync(rootFile)) {
+                log.notice('开始执行自定义模版');
+                const templatePath = path.resolve(this.templateNpm.cacheFilePath, 'template');
+                const options = {
+                    templateInfo: this.templateInfo,
+                    projectInfo: this.projectInfo,
+                    sourcePath: templatePath,
+                    targetPath: process.cwd(),
+                };
+                const code = `require('${rootFile}')(${JSON.stringify(options)})`;
+                log.verbose('code', code);
+                await execAsync('node', ['-e', code], { stdio: 'inherit', cwd: process.cwd() });
+                log.success('自定义模版安装成功');
+            } else {
+                throw new Error('自定义模版入口文件不存在！');
+            }
+        }
     }
 
     async downloadTemplate() {
