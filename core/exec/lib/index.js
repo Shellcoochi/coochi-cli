@@ -7,8 +7,7 @@ const log = require('@coochi/log');
 const { exec: spawn } = require('@coochi/utils');
 
 const SETTINGS = {
-    // init: '@coochi/init'
-    init: 'dotenv'
+    init: '@coochi/init'
 }
 
 const CACHE_DIR = 'dependencies'

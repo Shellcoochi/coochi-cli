@@ -162,7 +162,6 @@ class InitCommand extends Command {
         if (await this.templateNpm.exists()) {
             const rootFile = this.templateNpm.getRootFilePath();
             // const rootFile = '/Users/shellcoochi/code/template/coochi-custom/index.js'
-            console.log(rootFile)
             if (fs.existsSync(rootFile)) {
                 log.notice('开始执行自定义模版');
                 const templatePath = path.resolve(this.templateNpm.cacheFilePath, 'template');
