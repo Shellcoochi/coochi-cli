@@ -14,8 +14,7 @@
     "lib"
   ],
   "publishConfig": {
-    "access": "public",
-    "registry": "https://registry.npm.taobao.org"
+    "access": "public"
   },
   "repository": {
     "type": "git",
@@ -28,12 +27,13 @@
     "url": "https://github.com/Shellcoochi/tmp/issues"
   },
   "dependencies": {
-    "@coo-chi/format-path": "file:../../utils/format-path",
-    "@coo-chi/get-npm-info": "file:../../utils/get-npm-info",
-    "@coo-chi/utils": "file:../../utils/utils",
+    "@coo-chi/format-path": "^1.0.1",
+    "@coo-chi/get-npm-info": "^1.0.1",
+    "@coo-chi/utils": "^1.0.1",
     "fs-extra": "^10.1.0",
     "npminstall": "^6.1.0",
     "path-exists": "^4.0.0",
     "pkg-dir": "^5.0.0"
-  }
+  },
+  "gitHead": "937a2232e3b94cb758b3d0d14345df52ebc030cd"
 }
