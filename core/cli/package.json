@@ -1,6 +1,6 @@
 {
   "name": "@coo-chi/core",
-  "version": "0.0.0",
+  "version": "1.0.0",
   "description": "> TODO: description",
   "author": "shellcoochi <18706577758@163.com>",
   "homepage": "https://github.com/Shellcoochi/tmp#readme",
@@ -30,10 +30,10 @@
     "url": "https://github.com/Shellcoochi/tmp/issues"
   },
   "dependencies": {
-    "@coo-chi/get-npm-info": "file:../../utils/get-npm-info",
     "@coo-chi/exec": "file:../exec",
-    "@coo-chi/log": "file:../../utils/log",
+    "@coo-chi/get-npm-info": "file:../../utils/get-npm-info",
     "@coo-chi/init": "file:../../commands/init",
+    "@coo-chi/log": "file:../../utils/log",
     "colors": "^1.4.0",
     "commander": "^9.2.0",
     "dotenv": "^16.0.0",
