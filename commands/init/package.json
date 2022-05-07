@@ -1,5 +1,5 @@
 {
-  "name": "@coochi/init",
+  "name": "@coo-chi/init",
   "version": "0.0.0",
   "description": "> TODO: description",
   "author": "shellcoochi <18706577758@163.com>",
@@ -27,11 +27,11 @@
     "url": "https://github.com/Shellcoochi/tmp/issues"
   },
   "dependencies": {
-    "@coochi/command": "file:../../models/command",
-    "@coochi/log": "file:../../utils/log",
-    "@coochi/package": "file:../../models/package",
-    "@coochi/request": "file:../../utils/request",
-    "@coochi/utils": "file:../../utils/utils",
+    "@coo-chi/command": "file:../../models/command",
+    "@coo-chi/log": "file:../../utils/log",
+    "@coo-chi/package": "file:../../models/package",
+    "@coo-chi/request": "file:../../utils/request",
+    "@coo-chi/utils": "file:../../utils/utils",
     "ejs": "^3.1.7",
     "fs-extra": "^10.1.0",
     "glob": "^8.0.1",

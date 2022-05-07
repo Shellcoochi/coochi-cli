@@ -1,11 +1,11 @@
-# `@coochi/init`
+# `@coo-chi/init`
 
 > TODO: description
 
 ## Usage
 
 ```
-const init = require('@coochi/init');
+const init = require('@coo-chi/init');
 
 // TODO: DEMONSTRATE API
 ```

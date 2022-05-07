@@ -2,6 +2,6 @@
 
 const init = require('..');
 
-describe('@coochi/init', () => {
+describe('@coo-chi/init', () => {
     it('needs tests');
 });

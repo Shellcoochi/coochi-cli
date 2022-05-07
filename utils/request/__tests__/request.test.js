@@ -2,6 +2,6 @@
 
 const request = require('..');
 
-describe('@coochi/request', () => {
+describe('@coo-chi/request', () => {
     it('needs tests');
 });

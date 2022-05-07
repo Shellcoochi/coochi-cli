@@ -9,11 +9,11 @@ const semver = require('semver');
 const glob = require('glob');
 const ejs = require('ejs');
 
-const Command = require('@coochi/command');
-const log = require('@coochi/log');
-const { spinnerStart, sleep, execAsync } = require('@coochi/utils');
+const Command = require('@coo-chi/command');
+const log = require('@coo-chi/log');
+const { spinnerStart, sleep, execAsync } = require('@coo-chi/utils');
 const getProjectTempalte = require('./getProjectTemplate');
-const Package = require('@coochi/package');
+const Package = require('@coo-chi/package');
 
 const TYPE_PROJECT = 'project';
 const TYPE_COMPONENT = 'component';

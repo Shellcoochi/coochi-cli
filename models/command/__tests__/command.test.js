@@ -2,6 +2,6 @@
 
 const command = require('..');
 
-describe('@coochi/command', () => {
+describe('@coo-chi/command', () => {
     it('needs tests');
 });

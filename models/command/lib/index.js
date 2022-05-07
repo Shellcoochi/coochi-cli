@@ -3,7 +3,7 @@
 const semver = require("semver");
 const colors = require("colors");
 
-const log = require('@coochi/log');
+const log = require('@coo-chi/log');
 
 const LOWEST_NODE_VERSION = 'v12.18.3';
 

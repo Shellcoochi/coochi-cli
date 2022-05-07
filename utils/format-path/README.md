@@ -1,11 +1,11 @@
-# `@coochi/format-path`
+# `@coo-chi/format-path`
 
 > TODO: description
 
 ## Usage
 
 ```
-const formatPath = require('@coochi/format-path');
+const formatPath = require('@coo-chi/format-path');
 
 // TODO: DEMONSTRATE API
 ```

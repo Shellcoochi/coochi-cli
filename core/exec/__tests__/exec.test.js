@@ -2,6 +2,6 @@
 
 const exec = require('..');
 
-describe('@coochi/exec', () => {
+describe('@coo-chi/exec', () => {
     it('needs tests');
 });

@@ -5,8 +5,8 @@ module.exports = core;
 const path = require("path");
 const userHome = require("os").homedir();
 const commander = require("commander");
-const log = require("@coochi/log");
-const exec = require("@coochi/exec");
+const log = require("@coo-chi/log");
+const exec = require("@coo-chi/exec");
 const semver = require("semver");
 const colors = require("colors");
 const pathExists = require("path-exists").sync;
@@ -93,7 +93,7 @@ async function checkGlobalUpdate() {
   const currentVersion = pkg.version;
   const npmName = pkg.name;
   //2.调用npm API，获取所有版本号
-  const { getNpmSemverVersion } = require("@coochi/get-npm-info");
+  const { getNpmSemverVersion } = require("@coo-chi/get-npm-info");
   // const lastVersion = await getNpmSemverVersion(currentVersion, npmName);
   const lastVersion = await getNpmSemverVersion("0.0.0", "semver");
   if (lastVersion && semver.gt(lastVersion, currentVersion)) {

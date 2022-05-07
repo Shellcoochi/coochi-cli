@@ -1,5 +1,5 @@
 {
-  "name": "@coochi/coochi-cli",
+  "name": "@coo-chi/coochi-cli",
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
@@ -10,5 +10,6 @@
   "license": "ISC",
   "devDependencies": {
     "lerna": "^4.0.0"
-  }
+  },
+  "dependencies": {}
 }

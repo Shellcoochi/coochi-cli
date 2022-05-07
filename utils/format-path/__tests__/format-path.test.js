@@ -2,6 +2,6 @@
 
 const formatPath = require('..');
 
-describe('@coochi/format-path', () => {
+describe('@coo-chi/format-path', () => {
     it('needs tests');
 });

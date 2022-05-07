@@ -2,12 +2,12 @@
 
 const path = require('path');
 
-const Package = require('@coochi/package');
-const log = require('@coochi/log');
-const { exec: spawn } = require('@coochi/utils');
+const Package = require('@coo-chi/package');
+const log = require('@coo-chi/log');
+const { exec: spawn } = require('@coo-chi/utils');
 
 const SETTINGS = {
-    init: '@coochi/init'
+    init: '@coo-chi/init'
 }
 
 const CACHE_DIR = 'dependencies'

@@ -1,5 +1,5 @@
 {
-  "name": "@coochi/package",
+  "name": "@coo-chi/package",
   "version": "0.0.0",
   "description": "> TODO: description",
   "author": "shellcoochi <18706577758@163.com>",
@@ -27,9 +27,9 @@
     "url": "https://github.com/Shellcoochi/tmp/issues"
   },
   "dependencies": {
-    "@coochi/format-path": "file:../../utils/format-path",
-    "@coochi/get-npm-info": "file:../../utils/get-npm-info",
-    "@coochi/utils": "file:../../utils/utils",
+    "@coo-chi/format-path": "file:../../utils/format-path",
+    "@coo-chi/get-npm-info": "file:../../utils/get-npm-info",
+    "@coo-chi/utils": "file:../../utils/utils",
     "fs-extra": "^10.1.0",
     "npminstall": "^6.1.0",
     "path-exists": "^4.0.0",

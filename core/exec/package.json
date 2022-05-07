@@ -1,5 +1,5 @@
 {
-  "name": "@coochi/exec",
+  "name": "@coo-chi/exec",
   "version": "0.0.0",
   "description": "> TODO: description",
   "author": "shellcoochi <18706577758@163.com>",
@@ -27,8 +27,8 @@
     "url": "https://github.com/Shellcoochi/tmp/issues"
   },
   "dependencies": {
-    "@coochi/log": "file:../../utils/log",
-    "@coochi/package": "file:../../models/package",
-    "@coochi/utils": "file:../../utils/utils"
+    "@coo-chi/log": "file:../../utils/log",
+    "@coo-chi/package": "file:../../models/package",
+    "@coo-chi/utils": "file:../../utils/utils"
   }
 }

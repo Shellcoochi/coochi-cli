@@ -2,6 +2,6 @@
 
 const package = require('..');
 
-describe('@coochi/package', () => {
+describe('@coo-chi/package', () => {
     it('needs tests');
 });

@@ -5,9 +5,9 @@ const pkgDir = require('pkg-dir').sync;
 const npminstall = require('npminstall');
 const pathExists = require('path-exists').sync;
 
-const formatPath = require('@coochi/format-path');
-const { isObject } = require('@coochi/utils');
-const { getDefaultRegistry, getNpmLatestVersion } = require('@coochi/get-npm-info');
+const formatPath = require('@coo-chi/format-path');
+const { isObject } = require('@coo-chi/utils');
+const { getDefaultRegistry, getNpmLatestVersion } = require('@coo-chi/get-npm-info');
 
 class Package {
     constructor(options) {
