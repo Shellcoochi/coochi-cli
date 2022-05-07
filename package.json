@@ -1,5 +1,5 @@
 {
-  "name": "@coochi/coochi-dev",
+  "name": "@coochi/coochi-cli",
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
