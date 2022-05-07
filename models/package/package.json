@@ -1,6 +1,6 @@
 {
   "name": "@coo-chi/package",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "> TODO: description",
   "author": "shellcoochi <18706577758@163.com>",
   "homepage": "https://github.com/Shellcoochi/tmp#readme",
@@ -27,9 +27,9 @@
     "url": "https://github.com/Shellcoochi/tmp/issues"
   },
   "dependencies": {
-    "@coo-chi/format-path": "^1.0.1",
-    "@coo-chi/get-npm-info": "^1.0.1",
-    "@coo-chi/utils": "^1.0.1",
+    "@coo-chi/format-path": "^1.0.2",
+    "@coo-chi/get-npm-info": "^1.0.2",
+    "@coo-chi/utils": "^1.0.2",
     "fs-extra": "^10.1.0",
     "npminstall": "^6.1.0",
     "path-exists": "^4.0.0",

@@ -1,6 +1,6 @@
 {
   "name": "@coo-chi/exec",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "> TODO: description",
   "author": "shellcoochi <18706577758@163.com>",
   "homepage": "http://index",
@@ -27,9 +27,9 @@
     "url": "https://github.com/Shellcoochi/tmp/issues"
   },
   "dependencies": {
-    "@coo-chi/log": "^1.0.1",
-    "@coo-chi/package": "^1.0.1",
-    "@coo-chi/utils": "^1.0.1"
+    "@coo-chi/log": "^1.0.2",
+    "@coo-chi/package": "^1.0.2",
+    "@coo-chi/utils": "^1.0.2"
   },
   "gitHead": "937a2232e3b94cb758b3d0d14345df52ebc030cd"
 }

@@ -1,6 +1,6 @@
 {
   "name": "@coo-chi/command",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "> TODO: description",
   "author": "shellcoochi <18706577758@163.com>",
   "homepage": "https://github.com/Shellcoochi/tmp#readme",
@@ -27,7 +27,7 @@
     "url": "https://github.com/Shellcoochi/tmp/issues"
   },
   "dependencies": {
-    "@coo-chi/log": "^1.0.1",
+    "@coo-chi/log": "^1.0.2",
     "colors": "^1.4.0",
     "semver": "^7.3.7"
   },
